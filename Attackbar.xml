@@ -1,4 +1,4 @@
-﻿ <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+ <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
  <Script file="Attackbar.lua"/>
  <Frame name="abar_core">
 	<Scripts>
@@ -95,7 +95,7 @@
 		<Layers>
 			<Layer level="BACKGROUND">
 				<Texture setAllPoints="true">
-					<Color r="0" g="0" b="0" a=".5"/>
+					<Color r="0" g="0" b="0" a="0.5"/>
 				</Texture>		
 			</Layer>
 			<Layer level="ARTWORK">
@@ -123,28 +123,6 @@
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<Texture name="$parentBorder" file="Interface\CastingBar\UI-CastingBar-Border">
-					<Size>
-						<AbsDimension x="256" y="64"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOP">
-							<Offset>
-								<AbsDimension x="0" y="28"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</Texture>
-			</Layer>
-			<Layer level="OVERLAY">
-				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
-					<Size>
-						<AbsDimension x="32" y="32"/>
-					</Size>
-					<Anchors>
-						<Anchor point="CENTER"/>
-					</Anchors>
-				</Texture>
 			</Layer>
 		</Layers>
 		<Scripts>
@@ -152,7 +130,7 @@
 				Abar_Update()
 			</OnUpdate>
 		</Scripts>
-		<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+		<BarTexture file="Interface\BUTTONS\WHITE8X8"/>
 		<BarColor r="0" g="0" b="1.0"/>
   </StatusBar>  
 <StatusBar name="Abar_Mhr" inherits="AbarBar" parent="UIParent"/>
@@ -207,4 +185,4 @@
 
 <StatusBar name="ebar_mh" inherits="AbarBar" parent="UIParent"/>
 <StatusBar name="ebar_oh" inherits="AbarBar" parent="UIParent"/>
-  </Ui>
+</Ui>
