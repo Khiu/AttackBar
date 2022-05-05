@@ -1,4 +1,4 @@
-﻿pont=0.000
+pont=0.000
 pofft= 0.000
 ont = 0.000
 offt= 0.000
@@ -119,20 +119,20 @@ if offs then
 		offh = 0
 		onh = onh +1
 		ons = ons - math.mod(ons,0.01)
-		Abar_Mhrs(tons,"Main["..ons.."s]("..hd.."-"..ld..")",0,0,1)
+		Abar_Mhrs(tons)
 	else
 		pofft = offt
 		offh = offh+1
 		onh = 0
 		ohd,old = ohd-math.mod(ohd,1),old-math.mod(old,1)
 		offs = offs - math.mod(offs,0.01)
-		Abar_Ohs(offs,"Off["..offs.."s]("..ohd.."-"..old..")",0,0,1)
+		Abar_Ohs(offs,"Off "..offs.."s")
 	end
 else
 	ont=GetTime()
 	tons = ons
 	ons = ons - math.mod(ons,0.01)
-	Abar_Mhrs(tons,"Main["..ons.."s]("..hd.."-"..ld..")",0,0,1)
+	Abar_Mhrs(tons)
 end
 
 end
@@ -163,11 +163,11 @@ function Abar_spellhit(arg1)
 	if spell == "Auto Shot" and abar.range == true then
 		trs=rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs,"Auto Shot["..rs.."s]("..rhd.."-"..rld..")",0,1,0)
+		Abar_Mhrs(trs)
 	elseif spell == "Shoot" and abar.range==true then
 		trs=rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs,"Wand["..ons.."s]("..rhd.."-"..rld..")",.7,.1,1)
+		Abar_Mhrs(trs)
 	elseif (spell == "Raptor Strike" or spell == "Heroic Strike" or
 	spell == "Maul" or spell == "Cleave") and abar.h2h==true then
 		hd,ld,ohd,lhd = UnitDamage("player")
@@ -176,7 +176,7 @@ function Abar_spellhit(arg1)
 		pont = ont
 		tons = ons
 		ons = ons - math.mod(ons,0.01)
-		Abar_Mhrs(tons,"Main["..ons.."s]("..hd.."-"..ld..")",0,0,1)
+		Abar_Mhrs(tons)
 	end
 end
 function abar_spelldir(spellname)
@@ -188,28 +188,28 @@ function abar_spelldir(spellname)
 	if spellname == "Throw" then
 		trs=rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs-1,"Thrown["..(rs).."s]("..rhd.."-"..rld..")",1,.5,0)
+		Abar_Mhrs(trs-1)
 	elseif spellname == "Shoot" then
 		rs =UnitRangedDamage("player")
 		trs=rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs-1,"Wand["..(rs).."s]("..rhd.."-"..rld..")",.5,0,1)
+		Abar_Mhrs(trs-1)
 	elseif spellname == "Shoot Bow" then
 		trs = rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs-1,"Bow["..(rs).."s]("..rhd.."-"..rld..")",1,.5,0)
+		Abar_Mhrs(trs-1)
 	elseif spellname == "Shoot Gun" then
 		trs = rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs-1,"Gun["..(rs).."s]("..rhd.."-"..rld..")",1,.5,0)
+		Abar_Mhrs(trs-1)
 	elseif spellname == "Shoot Crossbow" then
 		trs=rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs-1,"X-Bow["..(rs).."s]("..rhd.."-"..rld..")",1,.5,0)
+		Abar_Mhrs(trs-1)
 	elseif spellname == "Aimed Shot" then
 		trs=rs
 		rs = rs-math.mod(rs,0.01)
-		Abar_Mhrs(trs-1,"Aiming["..(3).."s]",1,.1,.1) 
+		Abar_Mhrs(trs-1) 
 	end
 	end
 	end
@@ -217,7 +217,6 @@ function abar_spelldir(spellname)
 function Abar_Update()
 local ttime = GetTime()
 local left = 0.00
-tSpark=getglobal(this:GetName().. "Spark")
 tText=getglobal(this:GetName().. "Tmr")
 if abar.timer==true then
 	left = (this.et-GetTime()) - (math.mod((this.et-GetTime()),.01))
@@ -228,19 +227,18 @@ else
         tText:Hide()
 end
 this:SetValue(ttime)
-tSpark:SetPoint("CENTER", this, "LEFT", (ttime-this.st)/(this.et-this.st)*195, 2);
 if ttime>=this.et then 
 this:Hide() 
-tSpark:SetPoint("CENTER", this, "LEFT",195, 2);
 end
 end
-function Abar_Mhrs(bartime,text,r,g,b)
+function Abar_Mhrs(bartime)
 Abar_Mhr:Hide()
 Abar_Mhr.txt = text
 Abar_Mhr.st = GetTime()
 Abar_Mhr.et = GetTime() + bartime
-Abar_Mhr:SetStatusBarColor(r,g,b)
-Abar_MhrText:SetText(text)
+Abar_Mhr:SetStatusBarColor(1,1,1,0.8)
+Abar_MhrText:SetText("")
+Abar_Mhr:SetHeight(2)
 Abar_Mhr:SetMinMaxValues(Abar_Mhr.st,Abar_Mhr.et)
 Abar_Mhr:SetValue(Abar_Mhr.st)
 Abar_Mhr:Show()
@@ -250,7 +248,7 @@ Abar_Oh:Hide()
 Abar_Oh.txt = text
 Abar_Oh.st = GetTime()
 Abar_Oh.et = GetTime() + bartime
-Abar_Oh:SetStatusBarColor(r,g,b)
+Abar_Oh:SetStatusBarColor(1,1,1)
 Abar_OhText:SetText(text)
 Abar_Oh:SetMinMaxValues(Abar_Oh.st,Abar_Oh.et)
 Abar_Oh:SetValue(Abar_Oh.st)
@@ -320,7 +318,7 @@ function ebar_set(targ)
 	end
 	else ]]
 	eons = eons - math.mod(eons,0.01)
-	ebar_mhs(eons,"Target".."["..eons.."s]",1,.1,.1)
+	ebar_mhs(eons,"Target".." "..eons.."s",1,0,0)
 	--message("work")
 end
 --end
@@ -329,8 +327,9 @@ ebar_mh:Hide()
 ebar_mh.txt = text
 ebar_mh.st = GetTime()
 ebar_mh.et = GetTime() + bartime
-ebar_mh:SetStatusBarColor(r,g,b)
-ebar_mhText:SetText(text)
+ebar_mh:SetStatusBarColor(1,0,0,0.8)
+ebar_mhText:SetText("")
+ebar_mh:SetHeight(2)
 ebar_mh:SetMinMaxValues(ebar_mh.st,ebar_mh.et)
 ebar_mh:SetValue(ebar_mh.st)
 ebar_mh:Show()
@@ -346,4 +345,3 @@ ebar_oh:SetMinMaxValues(ebar_oh.st,ebar_oh.et)
 ebar_oh:SetValue(ebar_oh.st)
 ebar_oh:Show()
 end
-
