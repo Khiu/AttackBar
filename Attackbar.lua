@@ -62,7 +62,7 @@ function Abar_loaded()
 		abar.timer=true
 	end
 	Abar_Mhr:SetPoint("LEFT",Abar_Frame,"TOPLEFT",6,-13)
-	Abar_Oh:SetPoint("LEFT",Abar_Frame,"TOPLEFT",6,-35)
+	Abar_Oh:SetPoint("LEFT",Abar_Frame,"TOPLEFT",6,-23)
 	Abar_MhrText:SetJustifyH("Left")
 	Abar_OhText:SetJustifyH("Left")
 	ebar_VL()
@@ -126,7 +126,7 @@ if offs then
 		onh = 0
 		ohd,old = ohd-math.mod(ohd,1),old-math.mod(old,1)
 		offs = offs - math.mod(offs,0.01)
-		Abar_Ohs(offs,"Off "..offs.."s")
+		Abar_Ohs(offs)
 	end
 else
 	ont=GetTime()
@@ -243,13 +243,14 @@ Abar_Mhr:SetMinMaxValues(Abar_Mhr.st,Abar_Mhr.et)
 Abar_Mhr:SetValue(Abar_Mhr.st)
 Abar_Mhr:Show()
 end
-function Abar_Ohs(bartime,text,r,g,b)
+function Abar_Ohs(bartime)
 Abar_Oh:Hide()
 Abar_Oh.txt = text
 Abar_Oh.st = GetTime()
 Abar_Oh.et = GetTime() + bartime
-Abar_Oh:SetStatusBarColor(1,1,1)
-Abar_OhText:SetText(text)
+Abar_Oh:SetStatusBarColor(0.52,0.80,0.92,0.8)
+Abar_OhText:SetText("")
+Abar_Oh:SetHeight(2)
 Abar_Oh:SetMinMaxValues(Abar_Oh.st,Abar_Oh.et)
 Abar_Oh:SetValue(Abar_Oh.st)
 Abar_Oh:Show()
@@ -265,7 +266,7 @@ function ebar_VL()
 	if not abar.pvp then abar.pvp = true end
 	if not abar.mob then abar.mob = true end
 	ebar_mh:SetPoint("LEFT",ebar_Frame,"TOPLEFT",6,-13)
-	ebar_oh:SetPoint("LEFT",ebar_Frame,"TOPLEFT",6,-35)
+	ebar_oh:SetPoint("LEFT",ebar_Frame,"TOPLEFT",6,-23)
 	ebar_mhText:SetJustifyH("Left")
 	ebar_ohText:SetJustifyH("Left")
 end

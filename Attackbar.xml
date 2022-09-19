@@ -83,7 +83,7 @@
 
   <StatusBar name="AbarBar" hidden="true" drawLayer="BORDER" parent="UIParent" virtual="true" toplevel="true">
 		<Size>
-			<AbsDimension x="195" y="13"/>
+			<AbsDimension x="195" y="2"/>
 		</Size>
 		<Anchors>
 			<Anchor point="CENTER">
